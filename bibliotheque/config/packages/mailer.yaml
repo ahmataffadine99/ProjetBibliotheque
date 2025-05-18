@@ -1,0 +1,5 @@
+framework:
+    mailer:
+        dsn: 'smtp://c20bf33e67f3cd:917c494057a38b@sandbox.smtp.mailtrap.io:2525?encryption=tls&auth_mode=login'
+
+        

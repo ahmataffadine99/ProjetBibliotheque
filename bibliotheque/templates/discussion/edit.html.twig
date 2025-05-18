@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la discussion{% endblock %}
+
+{% block body %}
+    <h1>Modifier votre discussion</h1>
+
+    {{ form_start(editForm) }}
+        {{ form_widget(editForm) }}
+    {{ form_end(editForm) }}
+
+    <a href="{{ path('app_livre_show', {'id': discussion.livre.id}) }}" class="btn btn-secondary mt-3">Retour au livre</a>
+{% endblock %}

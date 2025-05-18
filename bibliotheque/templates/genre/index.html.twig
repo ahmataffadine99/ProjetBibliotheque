@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Genres{% endblock %}
+
+{% block body %}
+    <h1>Gestion des Genres</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for genre in genres %}
+            <tr>
+                <td>{{ genre.nom }}</td>
+                <td>
+                    <a href="{{ path('app_genre_edit', {'id': genre.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    {{ include('genre/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Aucun genre trouvé.</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_genre_new') }}" class="btn btn-success">Ajouter un Genre</a>
+{% endblock %}

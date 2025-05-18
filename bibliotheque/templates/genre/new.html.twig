@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Genre{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un Genre</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+      
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_genre_index') }}">Retour à la liste des genres</a>
+{% endblock %}

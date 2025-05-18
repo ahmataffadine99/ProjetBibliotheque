@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de la recherche{% endblock %}
+
+{% block body %}
+    <h1>Résultats de la recherche</h1>
+
+    {% if motCle %}
+        <h2>Vous avez recherché : "{{ motCle }}"</h2>
+    {% endif %}
+
+    {% if livres is not empty %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for livre in livres %}
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="{{ path('app_livre_show', {'id': livre.id}) }}">{{ livre.Titre }}</a></h5>
+                            <p class="card-text">{{ livre.Description|length > 100 ? livre.Description|slice(0, 100) ~ '...' : livre.Description }}</p>
+                            <p class="card-text"><small class="text-muted">Par
+                                {% for auteur in livre.auteurs %}
+                                    {{ auteur.prenom }} {{ auteur.nom }}{% if not loop.last %}, {% endif %}
+                                {% else %}
+                                    Auteur inconnu
+                                {% endfor %}
+                                -
+                                {% for genre in livre.genres %}
+                                    {{ genre.nom }}{% if not loop.last %}, {% endif %}
+                                {% else %}
+                                    Aucun genre
+                                {% endfor %}
+                            </small></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun livre ne correspond à votre recherche.</p>
+    {% endif %}
+
+    <a href="{{ path('app_livre_index') }}" class="btn btn-secondary mt-3">Retour à la liste des livres</a>
+{% endblock %}

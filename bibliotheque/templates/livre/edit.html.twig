@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Livre{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-start" style="min-height: 80vh; margin-top: 2rem;">
+    <div class="card w-100" style="max-width: 500px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+        <div class="card-header bg-primary text-white text-center">
+            <h3 class="mb-0">Modifier le Livre</h3>
+        </div>
+        <div class="card-body">
+            {{ include('livre/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="{{ path('app_livre_index') }}" class="btn btn-outline-secondary">
+                    ← Retour à la liste
+                </a>
+                {{ include('livre/_delete_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

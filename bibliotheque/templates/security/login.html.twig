@@ -1,0 +1,119 @@
+{% extends 'base_no_nav.html.twig' %}
+
+{% block title %}Se connecter{% endblock %}
+
+{% block body %}
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            width: 400px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            border: none;
+            background-color: #ffffff;
+        }
+
+        .card-body {
+            padding: 30px;
+        }
+
+        .card-title {
+            color: #003366;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .form-control {
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+        }
+
+        .btn-primary {
+            background-color: #006680;
+            border-color: #006680;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background-color: #004d66;
+            border-color: #004d66;
+        }
+
+        .forgot-password {
+            margin-top: 15px;
+            text-align: center;
+            color: #006680;
+            text-decoration: none;
+            display: block; /* Pour que le lien "Retour à l'accueil" soit sur une nouvelle ligne */
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .return-home {
+            margin-top: 15px;
+            text-align: center;
+            color: #555; /* Gris doux */
+            text-decoration: none;
+            display: block; /* Pour que le lien soit sur une nouvelle ligne */
+            font-size: 0.9rem;
+        }
+
+        .return-home:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title">Se connecter</h1>
+
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Email</label>
+                        <input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" type="submit">
+                            Se connecter
+                        </button>
+                    </div>
+
+                    <a href="{{ path('app_forgot_password_request') }}" class="forgot-password">Mot de passe oublié ?</a>
+                    <a href="{{ path('app_home') }}" class="return-home">Retour à l'accueil</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

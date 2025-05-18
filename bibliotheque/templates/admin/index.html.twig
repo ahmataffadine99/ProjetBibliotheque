@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block body %}
+    <div class="container d-flex justify-content-center align-items-center vh-100">
+        <div class="card shadow-lg p-5 rounded text-center" style="width: 500px;">
+            <h1 class="card-title mb-4 text-primary">Panneau d'administration</h1>
+            <p class="mb-4">Bienvenue dans la section d'administration.</p>
+
+            <div class="d-grid">
+                <a href="{{ path('app_logout') }}" class="btn btn-danger btn-lg">Se déconnecter</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

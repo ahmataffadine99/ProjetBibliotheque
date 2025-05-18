@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un nouveau Livre{% endblock %}
+
+{% block body %}
+<div class="container d-flex justify-content-center align-items-start" style="min-height: 80vh; margin-top: 2rem;">
+    <div class="card w-100" style="max-width: 500px; box-shadow: 0 0 15px rgba(0,0,0,0.1);">
+        <div class="card-header bg-success text-white text-center">
+            <h3 class="mb-0">Créer un nouveau Livre</h3>
+        </div>
+        <div class="card-body">
+            {{ include('livre/_form.html.twig', {'button_label': 'Créer'}) }}
+
+            <div class="mt-4">
+                <a href="{{ path('app_livre_index') }}" class="btn btn-outline-secondary">
+                    ← Retour à la liste
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
